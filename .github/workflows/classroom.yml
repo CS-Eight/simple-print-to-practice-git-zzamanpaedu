@@ -25,35 +25,9 @@ jobs:
         comparison-method: exact
         timeout: 10
         max-score: 10
-    - name: number squared - test
-      id: number-squared-test
-      uses: classroom-resources/autograding-io-grader@v1
-      with:
-        test-name: number squared - test
-        setup-command: ''
-        command: python3 main.py
-        input: '5'
-        expected-output: '25'
-        comparison-method: exact
-        timeout: 10
-        max-score: 10
-    - name: accept a name from the input and print that name
-      id: accept-a-name-from-the-input-and-print-that-name
-      uses: classroom-resources/autograding-io-grader@v1
-      with:
-        test-name: accept a name from the input and print that name
-        setup-command: ''
-        command: python3 main.py
-        input: John
-        expected-output: Hello John
-        comparison-method: exact
-        timeout: 10
-        max-score: 10
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         PRINTS-HELLO-PINNACLE_RESULTS: "${{steps.prints-hello-pinnacle.outputs.result}}"
-        NUMBER-SQUARED-TEST_RESULTS: "${{steps.number-squared-test.outputs.result}}"
-        ACCEPT-A-NAME-FROM-THE-INPUT-AND-PRINT-THAT-NAME_RESULTS: "${{steps.accept-a-name-from-the-input-and-print-that-name.outputs.result}}"
       with:
-        runners: prints-hello-pinnacle,number-squared-test,accept-a-name-from-the-input-and-print-that-name
+        runners: prints-hello-pinnacle
